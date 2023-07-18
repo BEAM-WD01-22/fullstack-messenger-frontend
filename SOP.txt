@@ -1,0 +1,22 @@
+SOP
+Same-Origin-Policy
+the javascript in a website can only talk to the same server/url/origin
+
+
+CORS
+       PORT
+        URL
+CROSS ORIGIN RESOURCE SHARING 
+
+DIFFERENT
+google.com gmail.com
+google.de google.fr
+localhost:5173 localhost:9000
+
+SAME
+wikipedia.org wikipedia.org/donations
+
+
+                (top-level-domain)
+DOMAIN NAME     TLD 
+gmail           .com
