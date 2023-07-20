@@ -10,6 +10,10 @@ export const MessagingProvider = ({ children }) => {
   const [temporaryEditingContent, setTemporaryEditingContent] = useState(""); // TEMPORARY STATE FOR EDITING
   const [error, setError] = useState(null);
 
+  const deepCompare = (a, b) => {
+    return JSON.stringify(a) === JSON.stringify(b);
+  };
+
   // WHEN THE APP LOADS, GET ALL MESSAGES
   useEffect(() => {
     // GET REQUEST (POLLING EVERY 1 SECOND)
@@ -23,7 +27,14 @@ export const MessagingProvider = ({ children }) => {
           }
           return res.json();
         })
-        .then((data) => setMessages(data))
+        .then((data) => {
+          console.log(data, messages);
+          if (deepCompare(data, messages)) {
+            return;
+          } else {
+            setMessages(data);
+          }
+        })
         .catch((error) => setError(error.message));
     }, 1000);
   }, []);
